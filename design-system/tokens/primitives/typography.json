@@ -6,10 +6,10 @@
 				"type": "fontFamilies"
 			},
 			"reading": {
-				"value": "'Sohne'",
+				"value": "Sohne",
 				"type": "fontFamilies"
 			},
-			"mono": { "value": "'Iosevka'", "type": "fontFamilies" },
+			"mono": { "value": "Iosevka", "type": "fontFamilies" },
 			"ui": { "value": "'Everett Mono'", "type": "fontFamilies" }
 		},
 		"size": {

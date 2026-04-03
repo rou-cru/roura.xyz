@@ -27,7 +27,7 @@
 }
 
 @font-face {
-	font-family: 'Iosevka';
+	font-family: Iosevka;
 	src: url('/fonts/Iosevka-Regular.woff2') format('woff2');
 	font-weight: 400;
 	font-style: normal;
@@ -35,7 +35,7 @@
 }
 
 @font-face {
-	font-family: 'Iosevka';
+	font-family: Iosevka;
 	src: url('/fonts/Iosevka-Bold.woff2') format('woff2');
 	font-weight: 700;
 	font-style: normal;
@@ -51,7 +51,7 @@
 }
 
 @font-face {
-	font-family: 'Sohne';
+	font-family: Sohne;
 	src: url('/fonts/Sohne-Regular.woff2') format('woff2');
 	font-weight: 400;
 	font-style: normal;
@@ -59,7 +59,7 @@
 }
 
 @font-face {
-	font-family: 'Sohne';
+	font-family: Sohne;
 	src: url('/fonts/Sohne-Semibold.woff2') format('woff2');
 	font-weight: 600;
 	font-style: normal;
@@ -74,7 +74,7 @@ body::before {
 	background-image: url('/noise.svg');
 	opacity: 0.015;
 	pointer-events: none;
-	z-index: 9999;
+	z-index: var(--layout-z-base);
 	mix-blend-mode: overlay;
 	contain: layout style;
 }
@@ -155,7 +155,7 @@ body::before {
 	padding: 0;
 	margin: -1px;
 	overflow: hidden;
-	clip: rect(0, 0, 0, 0);
+	clip-path: inset(50%);
 	white-space: nowrap;
 	border-width: 0;
 }
@@ -195,11 +195,11 @@ body::before {
 }
 
 .animate-fade-in-up {
-	animation: var(--animate-fade-in-up);
+	animation: var(--animation-fade-in-up);
 }
 
 .animate-fade-in-up > * {
-	animation: var(--animate-fade-in-up);
+	animation: var(--animation-fade-in-up);
 }
 
 /* ===== RESPONSIVE TYPOGRAPHY (Design System) ===== */
