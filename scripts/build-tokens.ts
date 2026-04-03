@@ -14,7 +14,7 @@ const config: Config = {
 		css: {
 			transformGroup: 'css',
 			transforms: ['attribute/cti', 'name/tailwind-v4', 'color/css'],
-			buildPath: 'src/styles/',
+			buildPath: join(projectRoot, 'src/styles/'),
 			files: [
 				{
 					destination: 'tokens.css',
