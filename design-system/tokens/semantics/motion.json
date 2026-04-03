@@ -1,0 +1,26 @@
+{
+	"animation": {
+		"fade-in-up": {
+			"value": "fadeInUp {motion.duration.hero} {motion.ease.standard} forwards",
+			"description": "Standard entrance animation"
+		},
+		"carousel-scroll": {
+			"value": "scroll {motion.duration.carousel} linear infinite",
+			"description": "Infinite carousel loop"
+		}
+	},
+	"transition": {
+		"hover": {
+			"value": "{motion.duration.hover} {motion.ease.standard}",
+			"description": "Hover state transitions"
+		},
+		"active": {
+			"value": "{motion.duration.active} {motion.ease.standard}",
+			"description": "Click/press feedback"
+		},
+		"entrance": {
+			"value": "{motion.duration.entrance} {motion.ease.standard}",
+			"description": "Element entrance"
+		}
+	}
+}

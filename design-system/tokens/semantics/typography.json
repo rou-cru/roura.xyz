@@ -1,0 +1,64 @@
+{
+	"text": {
+		"display": {
+			"family": { "value": "{font.family.display}" },
+			"size": { "value": "{font.size.7}" },
+			"leading": { "value": "{font.leading.tight}" },
+			"tracking": { "value": "{font.tracking.tightest}" },
+			"weight": { "value": "{font.weight.ultrabold}" }
+		},
+		"headline": {
+			"family": { "value": "{font.family.display}" },
+			"size": { "value": "{font.size.5}" },
+			"leading": { "value": "{font.leading.snug}" },
+			"tracking": { "value": "{font.tracking.tighter}" },
+			"weight": { "value": "{font.weight.bold}" }
+		},
+		"title": {
+			"family": { "value": "{font.family.display}" },
+			"size": { "value": "{font.size.4}" },
+			"leading": { "value": "{font.leading.snug}" },
+			"tracking": { "value": "{font.tracking.tight}" },
+			"weight": { "value": "{font.weight.semibold}" }
+		},
+		"body-lg": {
+			"family": { "value": "{font.family.reading}" },
+			"size": { "value": "{font.size.3}" },
+			"leading": { "value": "{font.leading.relaxed}" },
+			"weight": { "value": "{font.weight.regular}" }
+		},
+		"body": {
+			"family": { "value": "{font.family.reading}" },
+			"size": { "value": "{font.size.2}" },
+			"leading": { "value": "{font.leading.normal}" },
+			"weight": { "value": "{font.weight.regular}" }
+		},
+		"caption": {
+			"family": { "value": "{font.family.ui}" },
+			"size": { "value": "{font.size.1}" },
+			"leading": { "value": "{font.leading.normal}" },
+			"tracking": { "value": "{font.tracking.wide}" },
+			"weight": { "value": "{font.weight.regular}" }
+		},
+		"card-title": {
+			"family": { "value": "{font.family.display}" },
+			"size": { "value": "{font.size.3}" },
+			"leading": { "value": "{font.leading.snug}" },
+			"tracking": { "value": "{font.tracking.tight}" },
+			"weight": { "value": "{font.weight.bold}" }
+		},
+		"card-body": {
+			"family": { "value": "{font.family.reading}" },
+			"size": { "value": "{font.size.2}" },
+			"leading": { "value": "{font.leading.normal}" },
+			"weight": { "value": "{font.weight.regular}" }
+		},
+		"ui-label": {
+			"family": { "value": "{font.family.mono}" },
+			"size": { "value": "{font.size.1}" },
+			"leading": { "value": "{font.leading.normal}" },
+			"tracking": { "value": "{font.tracking.wide}" },
+			"weight": { "value": "{font.weight.medium}" }
+		}
+	}
+}
