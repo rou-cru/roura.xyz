@@ -1,0 +1,8 @@
+{
+	"shadow": {
+		"sm": { "value": "0 4px 12px oklch(0 0 0 / 0.18)" },
+		"md": { "value": "0 8px 20px oklch(0 0 0 / 0.24)" },
+		"lg": { "value": "0 16px 40px oklch(0 0 0 / 0.32)" },
+		"xl": { "value": "0 24px 60px oklch(0 0 0 / 0.45)" }
+	}
+}

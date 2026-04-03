@@ -1,0 +1,30 @@
+{
+	"motion": {
+		"duration": {
+			"hover": { "value": "200ms" },
+			"active": { "value": "100ms" },
+			"entrance": { "value": "400ms" },
+			"hero": { "value": "600ms" },
+			"carousel": { "value": "60s" }
+		},
+		"delay": {
+			"100": { "value": "100ms" },
+			"200": { "value": "200ms" },
+			"300": { "value": "300ms" },
+			"400": { "value": "400ms" }
+		},
+		"ease": {
+			"standard": { "value": "cubic-bezier(0.4, 0, 0.2, 1)" }
+		},
+		"scale": {
+			"hover": { "value": "1.02" },
+			"active": { "value": "0.98" },
+			"translate-y": { "value": "24px" },
+			"hover-y": { "value": "-4px" }
+		},
+		"animation": {
+			"fade-in-up": { "value": "fadeInUp {motion.duration.hero} {motion.ease.standard} forwards" },
+			"carousel-scroll": { "value": "scroll {motion.duration.carousel} linear infinite" }
+		}
+	}
+}

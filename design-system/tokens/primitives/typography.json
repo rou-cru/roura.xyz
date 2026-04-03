@@ -1,0 +1,65 @@
+{
+	"font": {
+		"family": {
+			"display": {
+				"value": "'Neue Machina'",
+				"type": "fontFamilies"
+			},
+			"reading": {
+				"value": "'Sohne'",
+				"type": "fontFamilies"
+			},
+			"mono": { "value": "'Iosevka'", "type": "fontFamilies" },
+			"ui": { "value": "'Everett Mono'", "type": "fontFamilies" }
+		},
+		"size": {
+			"1": { "value": "0.707rem", "comment": "11.3px - Caption" },
+			"2": { "value": "1rem", "comment": "16px - Base" },
+			"3": {
+				"value": "clamp(1rem, 0.86rem + 0.43vw, 1.414rem)",
+				"comment": "16px-22.6px (Shift -1 step)"
+			},
+			"4": {
+				"value": "clamp(1.414rem, 1.22rem + 0.61vw, 2rem)",
+				"comment": "22.6px-32px (Shift -1 step)"
+			},
+			"5": {
+				"value": "clamp(1.414rem, 0.94rem + 1.47vw, 2.828rem)",
+				"comment": "22.6px-45.3px (Shift -2 steps)"
+			},
+			"6": {
+				"value": "clamp(2rem, 1.33rem + 2.08vw, 4rem)",
+				"comment": "32px-64px (Shift -2 steps)"
+			},
+			"7": {
+				"value": "clamp(2rem, 0.78rem + 3.81vw, 5.657rem)",
+				"comment": "32px-90.5px (Shift -3 steps) - Fix Mobile Overflow"
+			},
+			"8": {
+				"value": "clamp(2.828rem, 1.10rem + 5.39vw, 8rem)",
+				"comment": "45px-128px (Shift -3 steps)"
+			}
+		},
+		"weight": {
+			"regular": { "value": "400" },
+			"medium": { "value": "500" },
+			"semibold": { "value": "600" },
+			"bold": { "value": "700" },
+			"ultrabold": { "value": "900", "comment": "Neue Machina Ultrabold for display" }
+		},
+		"leading": {
+			"tight": { "value": "1.0", "comment": "Display grande, hero" },
+			"snug": { "value": "1.1", "comment": "Headlines, titles" },
+			"normal": { "value": "1.5", "comment": "Body default" },
+			"relaxed": { "value": "1.6", "comment": "Body-lg, lectura prolongada" }
+		},
+		"tracking": {
+			"tightest": { "value": "-0.05em", "comment": "Display hero - dramatic" },
+			"tighter": { "value": "-0.03em", "comment": "Headlines" },
+			"tight": { "value": "-0.02em", "comment": "Titles" },
+			"normal": { "value": "0em", "comment": "Body" },
+			"wide": { "value": "0.01em", "comment": "Énfasis, captions" },
+			"wider": { "value": "0.05em", "comment": "Eyebrows, uppercase" }
+		}
+	}
+}
