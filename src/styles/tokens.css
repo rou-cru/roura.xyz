@@ -1,6 +1,6 @@
 /**
  * Do not edit directly, this file was auto-generated.
- * Generated on Fri, 03 Apr 2026 23:29:28 GMT
+ * Generated on Sat, 04 Apr 2026 00:08:29 GMT
  */
 
 @theme {
@@ -94,8 +94,8 @@
 	--motion-animation-fade-in-up: fadeInUp 600ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
 	--motion-animation-carousel-scroll: scroll 60s linear infinite;
 	--font-family-display: 'Neue Machina';
-	--font-family-reading: Sohne;
-	--font-family-mono: Iosevka;
+	--font-family-reading: sohne;
+	--font-family-mono: iosevka;
 	--font-family-ui: 'Everett Mono';
 	--font-size-1: 0.707rem;
 	--font-size-2: 1rem;
@@ -137,6 +137,7 @@
 	--layout-z-elevated: 10;
 	--layout-z-overlay: 50;
 	--layout-z-modal: 100;
+	--layout-z-texture: 101;
 	--card-padding: 1.5rem;
 	--animation-fade-in-up: fadeInUp 600ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
 	--animation-carousel-scroll: scroll 60s linear infinite;
@@ -158,11 +159,11 @@
 	--text-title-leading: 1.1;
 	--text-title-tracking: -0.02em;
 	--text-title-weight: 600;
-	--font-body-lg: Sohne;
+	--font-body-lg: sohne;
 	--text-body-lg-size: clamp(1rem, 0.86rem + 0.43vw, 1.414rem);
 	--text-body-lg-leading: 1.6;
 	--text-body-lg-weight: 400;
-	--font-body: Sohne;
+	--font-body: sohne;
 	--text-body-size: 1rem;
 	--text-body-leading: 1.5;
 	--text-body-weight: 400;
@@ -176,13 +177,13 @@
 	--text-card-title-leading: 1.1;
 	--text-card-title-tracking: -0.02em;
 	--text-card-title-weight: 700;
-	--font-card-body: Sohne;
+	--font-card-body: sohne;
 	--text-card-body-size: 1rem;
 	--text-card-body-leading: 1.5;
 	--text-card-body-weight: 400;
-	--font-ui-label: Iosevka;
-	--text-ui-label-size: 0.707rem;
-	--text-ui-label-leading: 1.5;
-	--text-ui-label-tracking: 0.01em;
-	--text-ui-label-weight: 500;
+	--font-ui: iosevka;
+	--text-ui-size: 0.707rem;
+	--text-ui-leading: 1.5;
+	--text-ui-tracking: 0.01em;
+	--text-ui-weight: 500;
 }

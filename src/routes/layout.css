@@ -1,4 +1,3 @@
-/* ===== IMPORTS (must come first) ===== */
 @import 'tailwindcss';
 @import '@layerstack/tailwind/core.css';
 @import '@layerstack/tailwind/themes/basic.css';
@@ -9,7 +8,7 @@
 @plugin '@tailwindcss/forms';
 @plugin '@tailwindcss/typography';
 
-/* ===== FONT LOADING ===== */
+/* Fonts */
 @font-face {
 	font-family: 'Neue Machina';
 	src: url('/fonts/NeueMachina-Regular.woff2') format('woff2');
@@ -27,7 +26,7 @@
 }
 
 @font-face {
-	font-family: Iosevka;
+	font-family: iosevka;
 	src: url('/fonts/Iosevka-Regular.woff2') format('woff2');
 	font-weight: 400;
 	font-style: normal;
@@ -35,7 +34,7 @@
 }
 
 @font-face {
-	font-family: Iosevka;
+	font-family: iosevka;
 	src: url('/fonts/Iosevka-Bold.woff2') format('woff2');
 	font-weight: 700;
 	font-style: normal;
@@ -51,7 +50,7 @@
 }
 
 @font-face {
-	font-family: Sohne;
+	font-family: sohne;
 	src: url('/fonts/Sohne-Regular.woff2') format('woff2');
 	font-weight: 400;
 	font-style: normal;
@@ -59,14 +58,14 @@
 }
 
 @font-face {
-	font-family: Sohne;
+	font-family: sohne;
 	src: url('/fonts/Sohne-Semibold.woff2') format('woff2');
 	font-weight: 600;
 	font-style: normal;
 	font-display: swap;
 }
 
-/* ===== TEXTURE: Subtle noise overlay ===== */
+/* Global Texture */
 body::before {
 	content: '';
 	position: fixed;
@@ -74,12 +73,11 @@ body::before {
 	background-image: url('/noise.svg');
 	opacity: 0.015;
 	pointer-events: none;
-	z-index: var(--layout-z-base);
+	z-index: var(--layout-z-texture);
 	mix-blend-mode: overlay;
 	contain: layout style;
 }
 
-/* ===== TYPOGRAPHY (from typography.css) - without @utility bug ===== */
 @layer base {
 	:root {
 		-webkit-font-smoothing: antialiased;
@@ -147,7 +145,6 @@ body::before {
 	}
 }
 
-/* ===== VISUALLY HIDDEN (SR-only for SEO) ===== */
 .sr-only {
 	position: absolute;
 	width: 1px;
@@ -160,7 +157,7 @@ body::before {
 	border-width: 0;
 }
 
-/* ===== ANIMATION UTILITIES (Design System) ===== */
+/* Animation Utilities */
 .animation-delay-0 {
 	animation-delay: 0ms !important;
 }
@@ -177,12 +174,10 @@ body::before {
 	animation-delay: var(--motion-delay-400) !important;
 }
 
-/* ===== BACKDROP FALLBACK (for browsers without oklab support) ===== */
 .Backdrop {
 	background-color: rgba(18, 18, 18, 0.7);
 }
 
-/* ===== CUSTOM ANIMATIONS ===== */
 @keyframes fadeInUp {
 	from {
 		opacity: 0;
@@ -202,7 +197,7 @@ body::before {
 	animation: var(--animation-fade-in-up);
 }
 
-/* ===== RESPONSIVE TYPOGRAPHY (Design System) ===== */
+/* Responsive Typography */
 @layer components {
 	.text-hero-main {
 		font-family: var(--font-display);
@@ -229,7 +224,7 @@ body::before {
 	}
 }
 
-/* ===== ACCESSIBILITY: Reduced Motion ===== */
+/* Accessibility */
 @media (prefers-reduced-motion: reduce) {
 	*,
 	*::before,
@@ -239,7 +234,6 @@ body::before {
 		transition-duration: 0.01ms !important;
 	}
 
-	/* Carousel: pause instead of removing — icons stay visible in position */
 	.carousel-track {
 		animation-play-state: paused !important;
 		animation-duration: 0.01ms !important;

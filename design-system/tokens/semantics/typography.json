@@ -53,7 +53,7 @@
 			"leading": { "value": "{font.leading.normal}" },
 			"weight": { "value": "{font.weight.regular}" }
 		},
-		"ui-label": {
+		"ui": {
 			"family": { "value": "{font.family.mono}" },
 			"size": { "value": "{font.size.1}" },
 			"leading": { "value": "{font.leading.normal}" },

@@ -29,7 +29,8 @@
 			"base": { "value": "0" },
 			"elevated": { "value": "10" },
 			"overlay": { "value": "50" },
-			"modal": { "value": "100" }
+			"modal": { "value": "100" },
+			"texture": { "value": "101" }
 		}
 	},
 	"card": {
