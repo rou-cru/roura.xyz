@@ -20,7 +20,7 @@
 @font-face {
 	font-family: 'Neue Machina';
 	src: url('/fonts/NeueMachina-Ultrabold.woff2') format('woff2');
-	font-weight: 700 900;
+	font-weight: 800;
 	font-style: normal;
 	font-display: swap;
 }
@@ -178,7 +178,7 @@ body::before {
 	background-color: rgba(18, 18, 18, 0.7);
 }
 
-@keyframes fadeInUp {
+@keyframes fade-in-up {
 	from {
 		opacity: 0;
 		transform: translateY(var(--motion-offset-y));
@@ -202,30 +202,41 @@ body::before {
 	.text-hero-main {
 		font-family: var(--font-display);
 		font-size: var(--text-display-size);
+		line-height: var(--text-display-leading);
+		letter-spacing: var(--text-display-tracking);
 		font-weight: var(--text-display-weight);
 	}
 
 	.text-hero-sub {
 		font-family: var(--font-title);
 		font-size: var(--text-title-size);
+		line-height: var(--text-title-leading);
+		letter-spacing: var(--text-title-tracking);
 		font-weight: var(--text-title-weight);
 	}
 
 	.text-section-title {
 		font-family: var(--font-headline);
 		font-size: var(--text-headline-size);
+		line-height: var(--text-headline-leading);
+		letter-spacing: var(--text-headline-tracking);
 		font-weight: var(--text-headline-weight);
 	}
 
 	.text-section-desc {
 		font-family: var(--font-body-lg);
 		font-size: var(--text-body-lg-size);
+		line-height: var(--text-body-lg-leading);
 		font-weight: var(--text-body-lg-weight);
 	}
 }
 
 /* Accessibility */
 @media (prefers-reduced-motion: reduce) {
+	html {
+		scroll-behavior: auto;
+	}
+
 	*,
 	*::before,
 	*::after {

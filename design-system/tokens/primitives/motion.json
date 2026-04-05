@@ -23,6 +23,12 @@
 		"offset": {
 			"y": { "value": "24px" },
 			"hover-y": { "value": "-4px" }
+		},
+		"animation": {
+			"fade-in-up": {
+				"value": "fade-in-up {motion.duration.hero} {motion.ease.standard} forwards"
+			},
+			"carousel-scroll": { "value": "scroll {motion.duration.carousel} linear infinite" }
 		}
 	}
 }
