@@ -1,16 +1,16 @@
 /**
  * Do not edit directly, this file was auto-generated.
- * Generated on Sun, 05 Apr 2026 08:00:53 GMT
+ * Generated on Sun, 05 Apr 2026 08:17:21 GMT
  */
 
 @theme {
 	--color-neutral-50: oklch(0.98 0.001 286);
 	--color-neutral-100: oklch(0.96 0.003 286);
-	--color-neutral-200: oklch(0.9 0.005 286);
-	--color-neutral-300: oklch(0.8 0.008 286);
-	--color-neutral-400: oklch(0.65 0.01 286);
-	--color-neutral-500: oklch(0.5 0.012 286);
-	--color-neutral-600: oklch(0.4 0.01 286);
+	--color-neutral-200: oklch(0.90 0.005 286);
+	--color-neutral-300: oklch(0.80 0.008 286);
+	--color-neutral-400: oklch(0.65 0.010 286);
+	--color-neutral-500: oklch(0.50 0.012 286);
+	--color-neutral-600: oklch(0.40 0.010 286);
 	--color-neutral-700: oklch(0.29 0.003 286);
 	--color-neutral-800: oklch(0.24 0.003 286);
 	--color-neutral-900: oklch(0.18 0.003 286);
@@ -24,14 +24,14 @@
 	--color-sage-600: oklch(0.51 0.12 160);
 	--color-sage-700: oklch(0.39 0.08 160);
 	--color-sage-800: oklch(0.27 0.04 160);
-	--color-sage-900: oklch(0.2 0.02 160);
+	--color-sage-900: oklch(0.20 0.02 160);
 	--color-sage-neon: oklch(0.85 0.22 155);
 	--color-base: oklch(0.14 0.002 286);
 	--color-surface: oklch(0.18 0.003 286);
 	--color-surface-elevated: oklch(0.24 0.003 286);
 	--color-text-high: oklch(0.98 0.001 286);
-	--color-text-medium: oklch(0.8 0.008 286);
-	--color-text-disabled: oklch(0.4 0.01 286);
+	--color-text-medium: oklch(0.80 0.008 286);
+	--color-text-disabled: oklch(0.40 0.010 286);
 	--color-text-inverse: oklch(0.14 0.002 286);
 	--color-border: oklch(0.29 0.003 286);
 	--color-border-focus: oklch(0.64 0.16 160);
@@ -104,13 +104,13 @@
 	--font-size-5: clamp(1.414rem, 0.94rem + 1.47vw, 2.828rem);
 	--font-size-6: clamp(2rem, 1.33rem + 2.08vw, 4rem);
 	--font-size-7: clamp(2rem, 0.78rem + 3.81vw, 5.657rem);
-	--font-size-8: clamp(2.828rem, 1.1rem + 5.39vw, 8rem);
+	--font-size-8: clamp(2.828rem, 1.10rem + 5.39vw, 8rem);
 	--font-weight-regular: 400;
 	--font-weight-medium: 500;
 	--font-weight-semibold: 600;
 	--font-weight-bold: 700;
 	--font-weight-ultrabold: 800;
-	--font-leading-tight: 1;
+	--font-leading-tight: 1.0;
 	--font-leading-snug: 1.1;
 	--font-leading-normal: 1.5;
 	--font-leading-relaxed: 1.6;
@@ -139,14 +139,14 @@
 	--layout-z-modal: 100;
 	--layout-z-texture: 101;
 	--card-padding: 1.5rem;
-	--animation-fade-in-up: fadeInUp 600ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+	--animation-fade-in-up: fade-in-up 600ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
 	--animation-carousel-scroll: scroll 60s linear infinite;
 	--transition-hover: 200ms cubic-bezier(0.4, 0, 0.2, 1);
 	--transition-active: 100ms cubic-bezier(0.4, 0, 0.2, 1);
 	--transition-entrance: 400ms cubic-bezier(0.4, 0, 0.2, 1);
 	--font-display: 'Neue Machina';
 	--text-display-size: clamp(2rem, 0.78rem + 3.81vw, 5.657rem);
-	--text-display-leading: 1;
+	--text-display-leading: 1.0;
 	--text-display-tracking: -0.05em;
 	--text-display-weight: 800;
 	--font-headline: 'Neue Machina';

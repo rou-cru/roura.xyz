@@ -1,7 +1,7 @@
 {
 	"animation": {
 		"fade-in-up": {
-			"value": "fadeInUp {motion.duration.hero} {motion.ease.standard} forwards",
+			"value": "fade-in-up {motion.duration.hero} {motion.ease.standard} forwards",
 			"description": "Standard entrance animation"
 		},
 		"carousel-scroll": {
