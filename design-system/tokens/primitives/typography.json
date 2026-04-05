@@ -6,10 +6,10 @@
 				"type": "fontFamilies"
 			},
 			"reading": {
-				"value": "'Sohne'",
+				"value": "sohne",
 				"type": "fontFamilies"
 			},
-			"mono": { "value": "'Iosevka'", "type": "fontFamilies" },
+			"mono": { "value": "iosevka", "type": "fontFamilies" },
 			"ui": { "value": "'Everett Mono'", "type": "fontFamilies" }
 		},
 		"size": {
@@ -45,7 +45,7 @@
 			"medium": { "value": "500" },
 			"semibold": { "value": "600" },
 			"bold": { "value": "700" },
-			"ultrabold": { "value": "900", "comment": "Neue Machina Ultrabold for display" }
+			"ultrabold": { "value": "800", "comment": "Neue Machina Ultrabold static weight" }
 		},
 		"leading": {
 			"tight": { "value": "1.0", "comment": "Display grande, hero" },

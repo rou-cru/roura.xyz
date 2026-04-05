@@ -45,8 +45,9 @@ const config: Config = {
 			format: async ({ dictionary }) => {
 				const header = `/**\n * Do not edit directly, this file was auto-generated.\n * Generated on ${new Date().toUTCString()}\n */\n\n`;
 				const tokens = dictionary.allTokens
-					.map((token) => `	${token.name}: ${token.value};`)
+					.map((token) => `\t${token.name}: ${token.value};`)
 					.join('\n');
+
 				return `${header}@theme {\n${tokens}\n}\n`;
 			}
 		});

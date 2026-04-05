@@ -1,0 +1,39 @@
+{
+	"nav": {
+		"height": { "value": "{size.space.16}" },
+		"z-index": { "value": "40" },
+		"overlay-z-index": { "value": "50" },
+		"backdrop-blur": { "value": "{size.space.3}" },
+		"bg-opacity": { "value": "0.9" }
+	},
+	"scroll": {
+		"margin-top": { "value": "{size.space.20}" }
+	},
+	"drawer": {
+		"width": {
+			"sm": { "value": "{size.container.xs}" },
+			"md": { "value": "{size.container.sm}" },
+			"lg": { "value": "{size.container.md}" }
+		},
+		"height": {
+			"mobile": { "value": "85vh" }
+		}
+	},
+	"container": {
+		"max": { "value": "{size.container.max}" },
+		"max-text": { "value": "{size.container.text}" },
+		"max-reading": { "value": "{size.container.reading}" }
+	},
+	"layout": {
+		"z": {
+			"base": { "value": "0" },
+			"elevated": { "value": "10" },
+			"overlay": { "value": "50" },
+			"modal": { "value": "100" },
+			"texture": { "value": "101" }
+		}
+	},
+	"card": {
+		"padding": { "value": "{size.space.6}" }
+	}
+}

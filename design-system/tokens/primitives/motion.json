@@ -18,12 +18,16 @@
 		},
 		"scale": {
 			"hover": { "value": "1.02" },
-			"active": { "value": "0.98" },
-			"translate-y": { "value": "24px" },
+			"active": { "value": "0.98" }
+		},
+		"offset": {
+			"y": { "value": "24px" },
 			"hover-y": { "value": "-4px" }
 		},
 		"animation": {
-			"fade-in-up": { "value": "fadeInUp {motion.duration.hero} {motion.ease.standard} forwards" },
+			"fade-in-up": {
+				"value": "fade-in-up {motion.duration.hero} {motion.ease.standard} forwards"
+			},
 			"carousel-scroll": { "value": "scroll {motion.duration.carousel} linear infinite" }
 		}
 	}

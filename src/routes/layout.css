@@ -1,1 +1,252 @@
-/* Base CSS skeleton */
+@import 'tailwindcss';
+@import '@layerstack/tailwind/core.css';
+@import '@layerstack/tailwind/themes/basic.css';
+@import '../styles/tokens.css';
+
+@source '../../node_modules/svelte-ux';
+
+@plugin '@tailwindcss/forms';
+@plugin '@tailwindcss/typography';
+
+/* Fonts */
+@font-face {
+	font-family: 'Neue Machina';
+	src: url('/fonts/NeueMachina-Regular.woff2') format('woff2');
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Neue Machina';
+	src: url('/fonts/NeueMachina-Ultrabold.woff2') format('woff2');
+	font-weight: 800;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: iosevka;
+	src: url('/fonts/Iosevka-Regular.woff2') format('woff2');
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: iosevka;
+	src: url('/fonts/Iosevka-Bold.woff2') format('woff2');
+	font-weight: 700;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Everett Mono';
+	src: url('/fonts/EverettMono-Regular.woff2') format('woff2');
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: sohne;
+	src: url('/fonts/Sohne-Regular.woff2') format('woff2');
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: sohne;
+	src: url('/fonts/Sohne-Semibold.woff2') format('woff2');
+	font-weight: 600;
+	font-style: normal;
+	font-display: swap;
+}
+
+/* Global Texture */
+body::before {
+	content: '';
+	position: fixed;
+	inset: 0;
+	background-image: url('/noise.svg');
+	opacity: 0.015;
+	pointer-events: none;
+	z-index: var(--layout-z-texture);
+	mix-blend-mode: overlay;
+	contain: layout style;
+}
+
+@layer base {
+	:root {
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+		font-feature-settings: 'cv11', 'ss01', 'tnum';
+	}
+
+	body {
+		background-color: var(--color-base);
+		color: var(--color-text-high);
+		font-family: var(--font-body);
+		line-height: var(--text-body-leading);
+	}
+
+	h1 {
+		font-family: var(--font-display);
+		font-weight: var(--text-display-weight);
+		letter-spacing: var(--text-display-tracking);
+		line-height: var(--text-display-leading);
+	}
+
+	h2,
+	h3 {
+		font-family: var(--font-headline);
+		font-weight: var(--text-headline-weight);
+		letter-spacing: var(--text-headline-tracking);
+		line-height: var(--text-headline-leading);
+	}
+
+	a {
+		color: var(--color-accent-text);
+		text-decoration: none;
+		transition: color var(--duration-hover) var(--ease-standard);
+	}
+
+	a:hover {
+		color: var(--color-accent-hover);
+	}
+
+	code,
+	pre {
+		font-family: var(--font-family-mono);
+	}
+
+	.text-eyebrow {
+		font-family: var(--font-caption);
+		font-size: var(--text-caption-size);
+		font-weight: var(--font-weight-bold);
+		text-transform: uppercase;
+		letter-spacing: var(--font-tracking-wider);
+		color: var(--color-text-medium);
+	}
+
+	html {
+		scroll-behavior: smooth;
+	}
+
+	*:focus-visible {
+		outline: calc(var(--border-width) * 2) solid var(--color-accent-text);
+		outline-offset: calc(var(--border-width) * 2);
+	}
+
+	section {
+		scroll-margin-top: var(--scroll-margin-top);
+	}
+}
+
+.sr-only {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip-path: inset(50%);
+	white-space: nowrap;
+	border-width: 0;
+}
+
+/* Animation Utilities */
+.animation-delay-0 {
+	animation-delay: 0ms !important;
+}
+.animation-delay-100 {
+	animation-delay: var(--motion-delay-100) !important;
+}
+.animation-delay-200 {
+	animation-delay: var(--motion-delay-200) !important;
+}
+.animation-delay-300 {
+	animation-delay: var(--motion-delay-300) !important;
+}
+.animation-delay-400 {
+	animation-delay: var(--motion-delay-400) !important;
+}
+
+.Backdrop {
+	background-color: rgba(18, 18, 18, 0.7);
+}
+
+@keyframes fade-in-up {
+	from {
+		opacity: 0;
+		transform: translateY(var(--motion-offset-y));
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+.animate-fade-in-up {
+	animation: var(--animation-fade-in-up);
+}
+
+.animate-fade-in-up > * {
+	animation: var(--animation-fade-in-up);
+}
+
+/* Responsive Typography */
+@layer components {
+	.text-hero-main {
+		font-family: var(--font-display);
+		font-size: var(--text-display-size);
+		line-height: var(--text-display-leading);
+		letter-spacing: var(--text-display-tracking);
+		font-weight: var(--text-display-weight);
+	}
+
+	.text-hero-sub {
+		font-family: var(--font-title);
+		font-size: var(--text-title-size);
+		line-height: var(--text-title-leading);
+		letter-spacing: var(--text-title-tracking);
+		font-weight: var(--text-title-weight);
+	}
+
+	.text-section-title {
+		font-family: var(--font-headline);
+		font-size: var(--text-headline-size);
+		line-height: var(--text-headline-leading);
+		letter-spacing: var(--text-headline-tracking);
+		font-weight: var(--text-headline-weight);
+	}
+
+	.text-section-desc {
+		font-family: var(--font-body-lg);
+		font-size: var(--text-body-lg-size);
+		line-height: var(--text-body-lg-leading);
+		font-weight: var(--text-body-lg-weight);
+	}
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+	html {
+		scroll-behavior: auto;
+	}
+
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+	}
+
+	.carousel-track {
+		animation-play-state: paused !important;
+		animation-duration: 0.01ms !important;
+	}
+}
