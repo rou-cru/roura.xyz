@@ -17,6 +17,7 @@
 		"format": "prettier --write .",
 		"doc": "sveld --input src/lib/components/ui --output docs/components --types --markdown",
 		"test:unit": "vitest",
+		"test:ui": "VITEST_BROWSER=true vitest",
 		"test": "npm run test:unit -- --run && npm run test:e2e",
 		"test:e2e": "playwright test"
 	},
