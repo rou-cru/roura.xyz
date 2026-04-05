@@ -1,6 +1,6 @@
 /**
  * Do not edit directly, this file was auto-generated.
- * Generated on Sat, 04 Apr 2026 00:08:29 GMT
+ * Generated on Sun, 05 Apr 2026 05:26:21 GMT
  */
 
 @theme {
@@ -89,10 +89,8 @@
 	--ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
 	--motion-scale-hover: 1.02;
 	--motion-scale-active: 0.98;
-	--motion-scale-translate-y: 24px;
-	--motion-scale-hover-y: -4px;
-	--motion-animation-fade-in-up: fadeInUp 600ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
-	--motion-animation-carousel-scroll: scroll 60s linear infinite;
+	--motion-offset-y: 24px;
+	--motion-offset-hover-y: -4px;
 	--font-family-display: 'Neue Machina';
 	--font-family-reading: sohne;
 	--font-family-mono: iosevka;
@@ -181,7 +179,7 @@
 	--text-card-body-size: 1rem;
 	--text-card-body-leading: 1.5;
 	--text-card-body-weight: 400;
-	--font-ui: iosevka;
+	--font-ui: 'Everett Mono';
 	--text-ui-size: 0.707rem;
 	--text-ui-leading: 1.5;
 	--text-ui-tracking: 0.01em;

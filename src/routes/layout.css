@@ -119,7 +119,7 @@ body::before {
 
 	code,
 	pre {
-		font-family: var(--font-ui);
+		font-family: var(--font-family-mono);
 	}
 
 	.text-eyebrow {
@@ -181,7 +181,7 @@ body::before {
 @keyframes fadeInUp {
 	from {
 		opacity: 0;
-		transform: translateY(var(--motion-translate-y));
+		transform: translateY(var(--motion-offset-y));
 	}
 	to {
 		opacity: 1;

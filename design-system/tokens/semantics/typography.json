@@ -54,7 +54,7 @@
 			"weight": { "value": "{font.weight.regular}" }
 		},
 		"ui": {
-			"family": { "value": "{font.family.mono}" },
+			"family": { "value": "{font.family.ui}" },
 			"size": { "value": "{font.size.1}" },
 			"leading": { "value": "{font.leading.normal}" },
 			"tracking": { "value": "{font.tracking.wide}" },
