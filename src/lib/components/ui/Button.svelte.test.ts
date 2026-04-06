@@ -23,6 +23,7 @@ describe('Button', () => {
 
 		const btn = page.getByTestId('btn');
 		await expect.element(btn).toHaveAttribute('target', '_blank');
+		await expect.element(btn).toHaveAttribute('rel', expect.stringMatching(/noopener|noreferrer/));
 	});
 
 	it('should render internal link', async () => {
@@ -72,7 +73,7 @@ describe('Button', () => {
 		
 		try {
 			await btn.click({ timeout: 500 });
-		} catch (e) {
+		} catch {
 			// Expected to fail clicking a disabled element in browser tests
 		}
 		expect(clicked).toBe(false);
