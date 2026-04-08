@@ -2,13 +2,7 @@ import { describe, it, expect } from 'vitest';
 import { render } from 'vitest-browser-svelte';
 import { page } from 'vitest/browser';
 import Section from './Section.svelte';
-import { createRawSnippet } from 'svelte';
-
-function createTextSnippet(text: string) {
-	return createRawSnippet(() => ({
-		render: () => `<span>${text}</span>`
-	}));
-}
+import { createTextSnippet } from './test-utils';
 
 describe('Section', () => {
 	it('should render content and attributes', async () => {
@@ -51,8 +45,10 @@ describe('Section', () => {
 			}
 		});
 
+		const section = page.getByTestId('section');
+		await expect.element(section).toBeInTheDocument();
 		// Semantic check: MUST be a <section> tag
-		const el = page.getByTestId('section').element();
+		const el = section.element();
 		expect((el as HTMLElement).tagName.toLowerCase()).toBe('section');
 	});
 

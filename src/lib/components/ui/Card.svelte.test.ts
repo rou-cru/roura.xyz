@@ -2,13 +2,7 @@ import { describe, it, expect } from 'vitest';
 import { render } from 'vitest-browser-svelte';
 import { page } from 'vitest/browser';
 import Card from './Card.svelte';
-import { createRawSnippet } from 'svelte';
-
-function createTextSnippet(text: string) {
-	return createRawSnippet(() => ({
-		render: () => `<span>${text}</span>`
-	}));
-}
+import { createTextSnippet } from './test-utils';
 
 describe('Card', () => {
 	it('should render content', async () => {

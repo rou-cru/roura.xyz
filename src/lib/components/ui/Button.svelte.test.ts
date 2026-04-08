@@ -70,7 +70,7 @@ describe('Button', () => {
 
 		const btn = page.getByTestId('btn-disabled');
 		await expect.element(btn).toBeDisabled();
-		
+
 		try {
 			await btn.click({ timeout: 500 });
 		} catch {
