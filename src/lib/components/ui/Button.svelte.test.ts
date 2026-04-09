@@ -2,13 +2,7 @@ import { describe, it, expect } from 'vitest';
 import { render } from 'vitest-browser-svelte';
 import { page } from 'vitest/browser';
 import Button from './Button.svelte';
-import { createRawSnippet } from 'svelte';
-
-function createTextSnippet(text: string) {
-	return createRawSnippet(() => ({
-		render: () => `<span>${text}</span>`
-	}));
-}
+import { createTextSnippet } from './test-utils';
 
 describe('Button', () => {
 	it('should render external link', async () => {
@@ -70,7 +64,7 @@ describe('Button', () => {
 
 		const btn = page.getByTestId('btn-disabled');
 		await expect.element(btn).toBeDisabled();
-		
+
 		try {
 			await btn.click({ timeout: 500 });
 		} catch {
