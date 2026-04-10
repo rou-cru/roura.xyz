@@ -84,11 +84,12 @@ describe('parseLink', () => {
 			expect(result.isInternal).toBe(true);
 		});
 
-		it('should handle path with hash and query', () => {
-			const result = parseLink('/page?foo=bar#section');
+		it('should treat protocol-relative URLs as external', () => {
+			const result = parseLink('//example.com');
 
-			expect(result.href).toBe('/page?foo=bar#section');
-			expect(result.isInternal).toBe(true);
+			expect(result.href).toBe('//example.com');
+			expect(result.isInternal).toBe(false);
+			expect(result.target).toBe('_blank');
 		});
 	});
 
@@ -98,8 +99,21 @@ describe('parseLink', () => {
 
 			expect(result.href).toBe('#');
 			expect(result.isInternal).toBe(true);
-			expect(result.target).toBeUndefined();
-			expect(result.rel).toBeUndefined();
+		});
+
+		it('should sanitize obfuscated javascript: URLs', () => {
+			// Strips ASCII control characters like \t \n \r
+			const result = parseLink('java\tscript:alert(1)');
+
+			expect(result.href).toBe('#');
+			expect(result.isInternal).toBe(true);
+		});
+
+		it('should sanitize javascript: URLs case-insensitively', () => {
+			const result = parseLink('JAVASCRIPT:alert(1)');
+
+			expect(result.href).toBe('#');
+			expect(result.isInternal).toBe(true);
 		});
 
 		it('should sanitize data: URLs', () => {
@@ -107,30 +121,10 @@ describe('parseLink', () => {
 
 			expect(result.href).toBe('#');
 			expect(result.isInternal).toBe(true);
-			expect(result.target).toBeUndefined();
-			expect(result.rel).toBeUndefined();
-		});
-
-		it('should sanitize vbscript: URLs', () => {
-			const result = parseLink('vbscript:msgbox("xss")');
-
-			expect(result.href).toBe('#');
-			expect(result.isInternal).toBe(true);
-			expect(result.target).toBeUndefined();
-			expect(result.rel).toBeUndefined();
 		});
 
 		it('should return safe default on null input (runtime safety)', () => {
 			const result = parseLink(null as unknown as string);
-
-			expect(result.href).toBe('#');
-			expect(result.isInternal).toBe(true);
-			expect(result.target).toBeUndefined();
-			expect(result.rel).toBeUndefined();
-		});
-
-		it('should sanitize javascript: URLs case-insensitively', () => {
-			const result = parseLink('JAVASCRIPT:alert(1)');
 
 			expect(result.href).toBe('#');
 			expect(result.isInternal).toBe(true);

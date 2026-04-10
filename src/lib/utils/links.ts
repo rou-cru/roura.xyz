@@ -11,7 +11,10 @@ export function parseLink(href: string) {
 	// Defensive: Handle null, undefined or non-string
 	const safeHref = typeof href === 'string' ? href.trim() : '';
 
-	if (!safeHref) {
+	// Browser URL parsers can normalize/drop control chars; strip them before protocol checks
+	const sanitizedHref = safeHref.replace(/[\u0000-\u001F\u007F]/g, '');
+
+	if (!sanitizedHref) {
 		return {
 			href: '#',
 			isInternal: true,
@@ -20,7 +23,7 @@ export function parseLink(href: string) {
 		};
 	}
 
-	const normalizedHref = safeHref.toLowerCase();
+	const normalizedHref = sanitizedHref.toLowerCase();
 
 	// Security: Block malicious protocols (case-insensitive)
 	if (BLOCKED_PROTOCOLS.some((p) => normalizedHref.startsWith(p))) {
@@ -33,16 +36,20 @@ export function parseLink(href: string) {
 	}
 
 	// Check internal paths (/ # mailto tel) or protocol-less relative paths
+	// Ensure // protocol-relative URLs are treated as external
+	const isProtocolRelative = normalizedHref.startsWith('//');
+	const hasScheme = /^[a-z][a-z0-9+.-]*:/.test(normalizedHref);
+
 	const isInternal =
-		normalizedHref.startsWith('/') ||
+		(!isProtocolRelative && normalizedHref.startsWith('/')) ||
 		normalizedHref.startsWith('#') ||
 		normalizedHref.startsWith('mailto:') ||
 		normalizedHref.startsWith('tel:') ||
-		!/^[a-z][a-z0-9+.-]*:/.test(normalizedHref);
+		(!hasScheme && !isProtocolRelative);
 
 	if (isInternal) {
 		return {
-			href: safeHref,
+			href: sanitizedHref,
 			isInternal: true,
 			target: undefined,
 			rel: undefined
@@ -51,7 +58,7 @@ export function parseLink(href: string) {
 
 	// External links
 	return {
-		href: safeHref,
+		href: sanitizedHref,
 		isInternal: false,
 		target: '_blank',
 		rel: 'noopener noreferrer'
