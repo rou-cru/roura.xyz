@@ -63,7 +63,7 @@
 
 {#if href && linkProps}
 	<a
-		{href}
+		href={linkProps.href}
 		target={linkProps.target}
 		rel={linkProps.rel}
 		{onclick}

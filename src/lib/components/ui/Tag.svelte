@@ -10,9 +10,10 @@
 		label: string;
 		variant?: 'default' | 'accent';
 		size?: 'sm' | 'md';
+		class?: string;
 	}
 
-	let { label, variant = 'default', size = 'sm', ...rest }: Props = $props();
+	let { label, variant = 'default', size = 'sm', class: className = '', ...rest }: Props = $props();
 
 	const variantClasses = {
 		default: 'bg-surface-elevated text-text-medium',
@@ -24,11 +25,11 @@
 		md: 'px-4 py-2'
 	};
 
-	const safeLabel = $derived(label.trim());
+	const safeLabel = $derived((label ?? '').trim());
 	const safeVariant = $derived(variant in variantClasses ? variant : 'default');
 	const safeSize = $derived(size in sizeClasses ? size : 'sm');
 	const classes = $derived(
-		`inline-flex items-center rounded-sm font-weight-medium text-ui-size ${variantClasses[safeVariant]} ${sizeClasses[safeSize]}`
+		`inline-flex items-center rounded-sm font-weight-medium text-ui-size ${variantClasses[safeVariant]} ${sizeClasses[safeSize]} ${className}`
 	);
 </script>
 

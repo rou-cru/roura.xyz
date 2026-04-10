@@ -30,6 +30,15 @@ describe('parseLink', () => {
 			expect(result.rel).toBeUndefined();
 		});
 
+		it('should parse tel link as internal (no new tab)', () => {
+			const result = parseLink('tel:+123456789');
+
+			expect(result.href).toBe('tel:+123456789');
+			expect(result.isInternal).toBe(true);
+			expect(result.target).toBeUndefined();
+			expect(result.rel).toBeUndefined();
+		});
+
 		it('should parse external https link correctly', () => {
 			const result = parseLink('https://github.com');
 
@@ -118,6 +127,13 @@ describe('parseLink', () => {
 			expect(result.isInternal).toBe(true);
 			expect(result.target).toBeUndefined();
 			expect(result.rel).toBeUndefined();
+		});
+
+		it('should sanitize javascript: URLs case-insensitively', () => {
+			const result = parseLink('JAVASCRIPT:alert(1)');
+
+			expect(result.href).toBe('#');
+			expect(result.isInternal).toBe(true);
 		});
 	});
 });

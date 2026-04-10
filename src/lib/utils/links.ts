@@ -1,66 +1,59 @@
 /**
- * Parsed link attributes for secure anchor element rendering
+ * Blocked protocols for security.
  */
-export interface ParsedLink {
-	/** Original URL or safe fallback */
-	href: string;
-	/** '_blank' for external links, undefined for internal */
-	target: '_blank' | undefined;
-	/** Security attributes for external links */
-	rel: 'noopener noreferrer' | undefined;
-	/** Whether link is internal, mailto, or relative */
-	isInternal: boolean;
-}
-
-/**
- * Parses and validates a URL, determining if it's internal or external.
- * Returns safe anchor element attributes with XSS protection.
- *
- * @example
- * parseLink('/about')           // Internal: no target/rel
- * parseLink('https://site.com') // External: adds security attrs
- * parseLink('javascript:...')   // Blocked: returns safe fallback
- */
-const SAFE_FALLBACK = '#';
 const BLOCKED_PROTOCOLS = ['javascript:', 'data:', 'vbscript:'];
 
-export function isBlockedProtocol(value: string): boolean {
-	return BLOCKED_PROTOCOLS.some((protocol) => value.startsWith(protocol));
-}
+/**
+ * Parses a string href into a structured link object.
+ * Identifies if the link is internal, external, or a special protocol.
+ */
+export function parseLink(href: string) {
+	// Defensive: Handle null, undefined or non-string
+	const safeHref = typeof href === 'string' ? href.trim() : '';
 
-export function parseLink(href: string): ParsedLink {
-	if (typeof href !== 'string' || href.trim() === '') {
+	if (!safeHref) {
 		return {
-			href: SAFE_FALLBACK,
+			href: '#',
+			isInternal: true,
 			target: undefined,
-			rel: undefined,
-			isInternal: true
+			rel: undefined
 		};
 	}
 
-	const normalizedHref = href.trim();
-	const loweredHref = normalizedHref.toLowerCase();
+	const normalizedHref = safeHref.toLowerCase();
 
-	if (isBlockedProtocol(loweredHref)) {
+	// Security: Block malicious protocols (case-insensitive)
+	if (BLOCKED_PROTOCOLS.some((p) => normalizedHref.startsWith(p))) {
 		return {
-			href: SAFE_FALLBACK,
+			href: '#',
+			isInternal: true,
 			target: undefined,
-			rel: undefined,
-			isInternal: true
+			rel: undefined
 		};
 	}
 
-	// Check internal paths (/ # mailto) or protocol-less relative paths
+	// Check internal paths (/ # mailto tel) or protocol-less relative paths
 	const isInternal =
 		normalizedHref.startsWith('/') ||
 		normalizedHref.startsWith('#') ||
 		normalizedHref.startsWith('mailto:') ||
+		normalizedHref.startsWith('tel:') ||
 		!/^[a-z][a-z0-9+.-]*:/.test(normalizedHref);
 
+	if (isInternal) {
+		return {
+			href: safeHref,
+			isInternal: true,
+			target: undefined,
+			rel: undefined
+		};
+	}
+
+	// External links
 	return {
-		href: normalizedHref,
-		target: isInternal ? undefined : '_blank',
-		rel: isInternal ? undefined : 'noopener noreferrer',
-		isInternal
+		href: safeHref,
+		isInternal: false,
+		target: '_blank',
+		rel: 'noopener noreferrer'
 	};
 }
