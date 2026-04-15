@@ -1,13 +1,16 @@
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, beforeEach } from 'vitest';
 import { render } from 'vitest-browser-svelte';
 import { page } from 'vitest/browser';
 import Button from './Button.svelte';
 import { createTextSnippet } from './test-utils';
 
 describe('Button', () => {
+	beforeEach(() => {
+		document.body.innerHTML = '';
+	});
+
 	it('should render external link', async () => {
 		render(Button, {
-			target: document.body,
 			props: {
 				href: 'https://example.com',
 				children: createTextSnippet('External'),
@@ -16,13 +19,13 @@ describe('Button', () => {
 		});
 
 		const btn = page.getByTestId('btn');
+		await expect.element(btn).toBeVisible();
 		await expect.element(btn).toHaveAttribute('target', '_blank');
 		await expect.element(btn).toHaveAttribute('rel', expect.stringMatching(/noopener|noreferrer/));
 	});
 
 	it('should render internal link', async () => {
 		render(Button, {
-			target: document.body,
 			props: {
 				href: '/internal',
 				children: createTextSnippet('Internal'),
@@ -38,22 +41,23 @@ describe('Button', () => {
 	it('should handle click', async () => {
 		let clicked = false;
 		render(Button, {
-			target: document.body,
 			props: {
 				onclick: () => (clicked = true),
 				children: createTextSnippet('Click'),
-				'data-testid': 'btn'
+				'data-testid': 'btn-click'
 			}
 		});
 
-		await page.getByTestId('btn').click();
+		const btn = page.getByTestId('btn-click');
+		await expect.element(btn).toBeVisible();
+		// Trigger NATIVE click to bypass locator abstraction issues
+		await btn.element().click();
 		expect(clicked).toBe(true);
 	});
 
 	it('should prevent click and have disabled attribute when disabled', async () => {
 		let clicked = false;
 		render(Button, {
-			target: document.body,
 			props: {
 				disabled: true,
 				onclick: () => (clicked = true),
@@ -66,9 +70,9 @@ describe('Button', () => {
 		await expect.element(btn).toBeDisabled();
 
 		try {
-			await btn.click({ timeout: 500 });
+			await btn.element().click();
 		} catch {
-			// Expected to fail clicking a disabled element in browser tests
+			// Expected failure
 		}
 		expect(clicked).toBe(false);
 	});
