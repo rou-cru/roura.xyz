@@ -6,13 +6,23 @@ const BLOCKED_PROTOCOLS = ['javascript:', 'data:', 'vbscript:'];
 /**
  * Parses a string href into a structured link object.
  * Identifies if the link is internal, external, or a special protocol.
+ * Sanitizes URLs to prevent XSS through protocol obfuscation.
  */
 export function parseLink(href: string) {
 	// Defensive: Handle null, undefined or non-string
 	const safeHref = typeof href === 'string' ? href.trim() : '';
 
-	// Browser URL parsers can normalize/drop control chars; strip them before protocol checks
-	const sanitizedHref = safeHref.replace(/[\u0000-\u001F\u007F]/g, '');
+	/**
+	 * Security: Browser URL parsers drop ASCII control characters (U+0000–U+001F and U+007F).
+	 * We must strip them manually before doing prefix checks to prevent bypasses
+	 * like "jav\tascript:". We use a character filter to avoid ESLint 'no-control-regex'.
+	 */
+	const sanitizedHref = Array.from(safeHref)
+		.filter((ch) => {
+			const code = ch.charCodeAt(0);
+			return !(code <= 0x1f || code === 0x7f);
+		})
+		.join('');
 
 	if (!sanitizedHref) {
 		return {

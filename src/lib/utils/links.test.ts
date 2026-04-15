@@ -101,9 +101,9 @@ describe('parseLink', () => {
 			expect(result.isInternal).toBe(true);
 		});
 
-		it('should sanitize obfuscated javascript: URLs', () => {
-			// Strips ASCII control characters like \t \n \r
-			const result = parseLink('java\tscript:alert(1)');
+		it('should sanitize obfuscated javascript: URLs with control characters', () => {
+			// Tab character within the protocol name
+			const result = parseLink('jav\tascript:alert(1)');
 
 			expect(result.href).toBe('#');
 			expect(result.isInternal).toBe(true);
