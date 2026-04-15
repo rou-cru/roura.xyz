@@ -25,7 +25,7 @@
 		md: 'px-4 py-2'
 	};
 
-	const safeLabel = $derived((label ?? '').trim());
+	const safeLabel = $derived(typeof label === 'string' ? label.trim() : '');
 	const safeVariant = $derived(variant in variantClasses ? variant : 'default');
 	const safeSize = $derived(size in sizeClasses ? size : 'sm');
 	const classes = $derived(

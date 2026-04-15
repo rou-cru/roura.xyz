@@ -1,14 +1,38 @@
+interface LinkResult {
+	href: string;
+	isInternal: boolean;
+	target?: string;
+	rel?: string;
+}
+
 /**
  * Blocked protocols for security.
  */
 const BLOCKED_PROTOCOLS = ['javascript:', 'data:', 'vbscript:'];
 
 /**
+ * Builders for canonical link shapes to ensure DRY and consistency.
+ */
+const buildInternalLink = (href = '#'): LinkResult => ({
+	href,
+	isInternal: true,
+	target: undefined,
+	rel: undefined
+});
+
+const buildExternalLink = (href: string): LinkResult => ({
+	href,
+	isInternal: false,
+	target: '_blank',
+	rel: 'noopener noreferrer'
+});
+
+/**
  * Parses a string href into a structured link object.
  * Identifies if the link is internal, external, or a special protocol.
  * Sanitizes URLs to prevent XSS through protocol obfuscation.
  */
-export function parseLink(href: string) {
+export function parseLink(href: string): LinkResult {
 	// Defensive: Handle null, undefined or non-string
 	const safeHref = typeof href === 'string' ? href.trim() : '';
 
@@ -25,24 +49,14 @@ export function parseLink(href: string) {
 		.join('');
 
 	if (!sanitizedHref) {
-		return {
-			href: '#',
-			isInternal: true,
-			target: undefined,
-			rel: undefined
-		};
+		return buildInternalLink();
 	}
 
 	const normalizedHref = sanitizedHref.toLowerCase();
 
 	// Security: Block malicious protocols (case-insensitive)
 	if (BLOCKED_PROTOCOLS.some((p) => normalizedHref.startsWith(p))) {
-		return {
-			href: '#',
-			isInternal: true,
-			target: undefined,
-			rel: undefined
-		};
+		return buildInternalLink();
 	}
 
 	// Check internal paths (/ # mailto tel) or protocol-less relative paths
@@ -58,19 +72,9 @@ export function parseLink(href: string) {
 		(!hasScheme && !isProtocolRelative);
 
 	if (isInternal) {
-		return {
-			href: sanitizedHref,
-			isInternal: true,
-			target: undefined,
-			rel: undefined
-		};
+		return buildInternalLink(sanitizedHref);
 	}
 
 	// External links
-	return {
-		href: sanitizedHref,
-		isInternal: false,
-		target: '_blank',
-		rel: 'noopener noreferrer'
-	};
+	return buildExternalLink(sanitizedHref);
 }
