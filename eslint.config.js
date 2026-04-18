@@ -35,5 +35,15 @@ export default tseslint.config(
 			// El helper centralizado maneja correctamente la resolución de URLs
 			'svelte/no-navigation-without-resolve': 'off'
 		}
+	},
+	{
+		files: ['**/*.svelte.ts'],
+		languageOptions: {
+			parser: tseslint.parser,
+			parserOptions: {
+				project: './tsconfig.json',
+				extraFileExtensions: ['.svelte.ts']
+			}
+		}
 	}
 );
