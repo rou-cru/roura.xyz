@@ -40,10 +40,10 @@ describe('sanitizeId', () => {
 		expect(sanitizeId('###')).toBeUndefined();
 	});
 
-	it('should not remove non-leading hashes', () => {
-		// Only leading hashes are stripped; hashes elsewhere are preserved
-		expect(sanitizeId('section#anchor')).toBe('section#anchor');
-		expect(sanitizeId('my#id#value')).toBe('my#id#value');
+	it('should replace non-leading hashes with hyphens', () => {
+		// All invalid characters (including #) are replaced with hyphens
+		expect(sanitizeId('section#anchor')).toBe('section-anchor');
+		expect(sanitizeId('my#id#value')).toBe('my-id-value');
 	});
 
 	it('should replace tab and newline whitespace with hyphens', () => {
@@ -52,14 +52,15 @@ describe('sanitizeId', () => {
 		expect(sanitizeId('hello\t\nworld')).toBe('hello-world');
 	});
 
-	it('should handle a pure numeric string', () => {
-		expect(sanitizeId('123')).toBe('123');
-		expect(sanitizeId('  42  ')).toBe('42');
+	it('should prefix pure numeric strings with id-', () => {
+		// CSS selectors cannot start with digits, so we prefix them
+		expect(sanitizeId('123')).toBe('id-123');
+		expect(sanitizeId('  42  ')).toBe('id-42');
 	});
 
-	it('should handle a single hyphen input', () => {
-		// A lone hyphen is not empty after processing, so it is returned
-		expect(sanitizeId('-')).toBe('-');
+	it('should return undefined for a single hyphen input', () => {
+		// Leading/trailing hyphens are stripped, leaving an empty string
+		expect(sanitizeId('-')).toBeUndefined();
 	});
 
 	it('should return undefined for boolean false passed as unknown string', () => {
@@ -74,5 +75,29 @@ describe('sanitizeId', () => {
 	it('should lowercase uppercase ASCII characters', () => {
 		expect(sanitizeId('HERO')).toBe('hero');
 		expect(sanitizeId('AboutUs')).toBe('aboutus');
+	});
+
+	it('should replace embedded dots with hyphens', () => {
+		expect(sanitizeId('foo.bar')).toBe('foo-bar');
+	});
+
+	it('should replace embedded hashes with hyphens', () => {
+		expect(sanitizeId('foo#bar')).toBe('foo-bar');
+	});
+
+	it('should replace embedded slashes with hyphens', () => {
+		expect(sanitizeId('foo/bar')).toBe('foo-bar');
+	});
+
+	it('should return undefined for hash-only input', () => {
+		expect(sanitizeId('###')).toBeUndefined();
+	});
+
+	it('should prefix with id- when result starts with a digit', () => {
+		expect(sanitizeId('1start')).toBe('id-1start');
+	});
+
+	it('should prefix with id- when result starts with multiple digits', () => {
+		expect(sanitizeId('123abc')).toBe('id-123abc');
 	});
 });

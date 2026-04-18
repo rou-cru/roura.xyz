@@ -9,13 +9,20 @@ describe('Card', () => {
 		document.body.innerHTML = '';
 	});
 
-	it('should render content', async () => {
-		render(Card, {
+	function renderCard(extraProps: Record<string, unknown> = {}) {
+		return render(Card, {
 			target: document.body,
 			props: {
-				children: createTextSnippet('Card Content'),
-				'data-testid': 'card'
+				children: createTextSnippet('Content'),
+				...extraProps
 			}
+		});
+	}
+
+	it('should render content', async () => {
+		renderCard({
+			children: createTextSnippet('Card Content'),
+			'data-testid': 'card'
 		});
 
 		await expect.element(page.getByTestId('card')).toBeInTheDocument();
@@ -23,14 +30,10 @@ describe('Card', () => {
 	});
 
 	it('should propagate native attributes', async () => {
-		render(Card, {
-			target: document.body,
-			props: {
-				children: createTextSnippet('Content'),
-				'data-testid': 'card',
-				role: 'article',
-				'aria-labelledby': 'card-title'
-			}
+		renderCard({
+			'data-testid': 'card',
+			role: 'article',
+			'aria-labelledby': 'card-title'
 		});
 
 		const card = page.getByTestId('card');
@@ -39,13 +42,7 @@ describe('Card', () => {
 	});
 
 	it('should render as a div element', async () => {
-		render(Card, {
-			target: document.body,
-			props: {
-				children: createTextSnippet('Content'),
-				'data-testid': 'card-div'
-			}
-		});
+		renderCard({ 'data-testid': 'card-div' });
 
 		const card = page.getByTestId('card-div');
 		await expect.element(card).toBeInTheDocument();
@@ -53,58 +50,37 @@ describe('Card', () => {
 		expect(el.tagName.toLowerCase()).toBe('div');
 	});
 
-	it('should apply base CSS classes', async () => {
-		render(Card, {
-			target: document.body,
-			props: {
-				children: createTextSnippet('Content'),
-				'data-testid': 'card-classes'
-			}
-		});
+	it('should have semantic data-card attribute', async () => {
+		renderCard({ 'data-testid': 'card-semantic' });
 
-		const card = page.getByTestId('card-classes');
-		await expect.element(card).toHaveAttribute('class', expect.stringContaining('rounded-lg'));
-		await expect.element(card).toHaveAttribute('class', expect.stringContaining('shadow-sm'));
-		await expect.element(card).toHaveAttribute('class', expect.stringContaining('overflow-hidden'));
+		const card = page.getByTestId('card-semantic');
+		await expect.element(card).toHaveAttribute('data-card');
 	});
 
 	it('should merge custom class with base classes', async () => {
-		render(Card, {
-			target: document.body,
-			props: {
-				children: createTextSnippet('Content'),
-				class: 'custom-class',
-				'data-testid': 'card-merge'
-			}
+		renderCard({
+			class: 'custom-class',
+			'data-testid': 'card-merge'
 		});
 
 		const card = page.getByTestId('card-merge');
 		await expect.element(card).toHaveAttribute('class', expect.stringContaining('custom-class'));
-		await expect.element(card).toHaveAttribute('class', expect.stringContaining('rounded-lg'));
+		await expect.element(card).toHaveAttribute('data-card');
 	});
 
-	it('should not have trailing whitespace in class when no custom class is provided', async () => {
-		render(Card, {
-			target: document.body,
-			props: {
-				children: createTextSnippet('Content'),
-				'data-testid': 'card-trim'
-			}
-		});
+	it('should not have trailing whitespace or double spaces in class', async () => {
+		renderCard({ 'data-testid': 'card-trim' });
 
 		const card = page.getByTestId('card-trim');
 		const classValue = (card.element() as HTMLElement).className;
-		expect(classValue).toBe(classValue.trim());
+		expect(classValue).not.toMatch(/\s$/);
+		expect(classValue).not.toMatch(/\s{2,}/);
 	});
 
 	it('should support id attribute via rest props', async () => {
-		render(Card, {
-			target: document.body,
-			props: {
-				children: createTextSnippet('Content'),
-				id: 'my-card',
-				'data-testid': 'card-id'
-			}
+		renderCard({
+			id: 'my-card',
+			'data-testid': 'card-id'
 		});
 
 		await expect.element(page.getByTestId('card-id')).toHaveAttribute('id', 'my-card');

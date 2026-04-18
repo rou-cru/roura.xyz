@@ -6,7 +6,7 @@ import { createTextSnippet } from './test-utils';
 
 describe('Section', () => {
 	beforeEach(() => {
-		document.body.innerHTML = '';
+		document.body.replaceChildren();
 	});
 
 	it('should render content and attributes', async () => {
@@ -98,7 +98,9 @@ describe('Section', () => {
 		});
 
 		const section = page.getByTestId('section-merge');
-		await expect.element(section).toHaveAttribute('class', expect.stringContaining('my-custom-section'));
+		await expect
+			.element(section)
+			.toHaveAttribute('class', expect.stringContaining('my-custom-section'));
 		await expect.element(section).toHaveAttribute('class', expect.stringContaining('relative'));
 	});
 
@@ -115,7 +117,7 @@ describe('Section', () => {
 		const section = page.getByTestId('section-whitespace-id');
 		await expect.element(section).toBeInTheDocument();
 		const idAttr = section.element().getAttribute('id');
-		expect(idAttr === null || idAttr === '').toBe(true);
+		expect(idAttr).toBeNull();
 	});
 
 	it('should not set id when provided id consists only of hash characters', async () => {
@@ -131,7 +133,7 @@ describe('Section', () => {
 		const section = page.getByTestId('section-hash-only-id');
 		await expect.element(section).toBeInTheDocument();
 		const idAttr = section.element().getAttribute('id');
-		expect(idAttr === null || idAttr === '').toBe(true);
+		expect(idAttr).toBeNull();
 	});
 
 	it('should not have trailing whitespace in class when no custom class is provided', async () => {
@@ -145,7 +147,9 @@ describe('Section', () => {
 
 		const section = page.getByTestId('section-trim');
 		const classValue = (section.element() as HTMLElement).className;
-		expect(classValue).toBe(classValue.trim());
+		expect(classValue).not.toMatch(/^\s/);
+		expect(classValue).not.toMatch(/\s$/);
+		expect(classValue).not.toMatch(/\s{2,}/);
 	});
 
 	it('should render children inside the section', async () => {
