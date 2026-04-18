@@ -10,7 +10,6 @@
 	 */
 
 	interface Props extends HTMLAttributes<HTMLDivElement> {
-		id?: string;
 		children: Snippet;
 		class?: string;
 	}

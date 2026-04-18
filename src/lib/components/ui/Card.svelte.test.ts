@@ -1,14 +1,10 @@
-import { describe, it, expect, beforeEach } from 'vitest';
+import { describe, it, expect } from 'vitest';
 import { render } from 'vitest-browser-svelte';
 import { page } from 'vitest/browser';
 import Card from './Card.svelte';
 import { createTextSnippet } from './test-utils';
 
 describe('Card', () => {
-	beforeEach(() => {
-		document.body.innerHTML = '';
-	});
-
 	function renderCard(extraProps: Record<string, unknown> = {}) {
 		return render(Card, {
 			target: document.body,
@@ -77,9 +73,9 @@ describe('Card', () => {
 		expect(classValue).not.toMatch(/\s{2,}/);
 	});
 
-	it('should support id attribute via rest props', async () => {
+	it('should forward a sanitized id to the root element', async () => {
 		renderCard({
-			id: 'my-card',
+			id: '#My Card',
 			'data-testid': 'card-id'
 		});
 
