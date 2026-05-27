@@ -1,0 +1,17 @@
+{
+	"tilt": {
+		"card": {
+			"max-rotation": { "value": 10 },
+			"set-brightness": { "value": true }
+		},
+		"carousel": {
+			"max-rotation": { "value": 10 }
+		}
+	},
+	"shine": {
+		"carousel": {
+			"light-radius": { "value": 280 },
+			"light-color": { "value": "{shine.light}" }
+		}
+	}
+}

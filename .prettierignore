@@ -8,6 +8,10 @@ bun.lockb
 # Miscellaneous
 /static/
 
+# Auto-generated
+src/styles/tokens.css
+.atl/
+
 # AI Tools
 .claude/
 .serena/

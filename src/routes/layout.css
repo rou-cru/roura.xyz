@@ -2,6 +2,7 @@
 @import '@layerstack/tailwind/core.css';
 @import '@layerstack/tailwind/themes/basic.css';
 @import '../styles/tokens.css';
+@import '../styles/composite.css';
 
 @source '../../node_modules/svelte-ux';
 
@@ -71,7 +72,7 @@ body::before {
 	position: fixed;
 	inset: 0;
 	background-image: url('/noise.svg');
-	opacity: 0.015;
+	opacity: var(--texture-opacity);
 	pointer-events: none;
 	z-index: var(--layout-z-texture);
 	mix-blend-mode: overlay;
@@ -133,6 +134,7 @@ body::before {
 
 	html {
 		scroll-behavior: smooth;
+		scroll-padding-top: var(--nav-height);
 	}
 
 	*:focus-visible {
@@ -145,24 +147,16 @@ body::before {
 	}
 }
 
-.sr-only {
-	position: absolute;
-	width: 1px;
-	height: 1px;
-	padding: 0;
-	margin: -1px;
-	overflow: hidden;
-	clip-path: inset(50%);
-	white-space: nowrap;
-	border-width: 0;
-}
 
 /* Animation Utilities */
 .animation-delay-0 {
-	animation-delay: 0ms !important;
+	animation-delay: var(--motion-delay-0) !important;
 }
 .animation-delay-100 {
 	animation-delay: var(--motion-delay-100) !important;
+}
+.animation-delay-150 {
+	animation-delay: var(--motion-delay-150) !important;
 }
 .animation-delay-200 {
 	animation-delay: var(--motion-delay-200) !important;
@@ -175,7 +169,7 @@ body::before {
 }
 
 .Backdrop {
-	background-color: rgba(18, 18, 18, 0.7);
+	background-color: var(--color-backdrop);
 }
 
 @keyframes fade-in-up {
@@ -192,9 +186,16 @@ body::before {
 .animate-fade-in-up {
 	animation: var(--animation-fade-in-up);
 }
+/* Child elements that should stagger-entrance must carry the .animate-fade-in-up class
+   explicitly alongside their .animation-delay-* class. */
 
-.animate-fade-in-up > * {
-	animation: var(--animation-fade-in-up);
+/* Touch Feedback */
+.touch-scale-active {
+	transition-duration: var(--duration-active);
+}
+
+.touch-scale-active:active {
+	scale: var(--motion-scale-active);
 }
 
 /* Responsive Typography */
@@ -243,10 +244,5 @@ body::before {
 		animation-duration: 0.01ms !important;
 		animation-iteration-count: 1 !important;
 		transition-duration: 0.01ms !important;
-	}
-
-	.carousel-track {
-		animation-play-state: paused !important;
-		animation-duration: 0.01ms !important;
 	}
 }

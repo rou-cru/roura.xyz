@@ -1,0 +1,12 @@
+<?xml version="1.0" ?>
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256">
+ <rect width="256" height="256" fill="none"/>
+ <defs>
+  <linearGradient id="metallicGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+   <stop offset="0%" stop-color="#f0f0f0"/>
+   <stop offset="50%" stop-color="#9d9d9d"/>
+   <stop offset="100%" stop-color="#c0c0c0"/>
+  </linearGradient>
+ </defs>
+ <text x="50%" y="54%" text-anchor="middle" fill="url(#metallicGradient)" font-size="140" font-family="Georgia, serif" font-weight="bold" dominant-baseline="middle">R</text>
+</svg>

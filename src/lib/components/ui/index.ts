@@ -1,6 +1,13 @@
 export { default as Button } from './Button.svelte';
 export { default as Tag } from './Tag.svelte';
 export { default as Card } from './Card.svelte';
+export { default as CardTilt } from './CardTilt.svelte';
 export { default as Section } from './Section.svelte';
 export { default as CloseIcon } from './CloseIcon.svelte';
 export { default as MenuIcon } from './MenuIcon.svelte';
+export { default as NavBar } from './Nav/NavBar.svelte';
+export { default as SideDrawer } from './SideDrawer.svelte';
+export { default as NavLink } from './Nav/NavLink.svelte';
+export { default as MobileMenu } from './Nav/MobileMenu.svelte';
+export { default as MetaHead } from './MetaHead.svelte';
+export { default as TechIconCarousel } from './TechIconCarousel.svelte';

@@ -25,6 +25,9 @@ Thumbs.db
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 
+# Agent runtime cache (modified by hooks — must not be tracked)
+.atl/
+
 # AI Tools
 .claude/
 .serena/

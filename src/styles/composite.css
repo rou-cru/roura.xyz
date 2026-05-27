@@ -1,0 +1,25 @@
+/**
+ * Composite tokens — derived from design system tokens using CSS functions
+ * that Style Dictionary cannot generate (e.g. color-mix).
+ * Do not add primitives here; all values must reference existing token variables.
+ */
+:root {
+	--color-nav-bg-scrolled: color-mix(
+		in oklch,
+		var(--color-base) calc(var(--nav-bg-opacity) * 100%),
+		transparent
+	);
+	--color-backdrop: color-mix(in oklch, var(--color-base) 70%, transparent);
+}
+
+/**
+ * Tailwind v4 theme extensions — maps design system tokens to Tailwind utility namespaces.
+ * Required for token-based utilities that are not covered by the default Tailwind scale.
+ */
+@theme {
+	--width-drawer-sm: var(--drawer-width-sm);
+	--width-drawer-md: var(--drawer-width-md);
+	--width-drawer-lg: var(--drawer-width-lg);
+	--max-width-container: var(--container-max);
+	--max-width-container-text: var(--container-max-text);
+}

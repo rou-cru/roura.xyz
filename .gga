@@ -1,0 +1,16 @@
+# Gentleman Guardian Angel Configuration
+# https://github.com/your-org/gga
+
+PROVIDER="opencode:opencode/deepseek-v4-flash-free"
+
+FILE_PATTERNS="*.svelte,*.ts,*.js,*.css"
+
+EXCLUDE_PATTERNS="*.test.ts,*.spec.ts,*.test.js,*.spec.js,*.d.ts,node_modules/**,dist/**,.svelte-kit/**"
+
+RULES_FILE="AGENTS.md"
+
+STRICT_MODE="true"
+
+TIMEOUT="300"
+
+# PR_BASE_BRANCH="main"

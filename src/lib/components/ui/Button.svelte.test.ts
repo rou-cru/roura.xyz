@@ -50,8 +50,7 @@ describe('Button', () => {
 
 		const btn = page.getByTestId('btn-click');
 		await expect.element(btn).toBeVisible();
-		// Trigger NATIVE click to bypass locator abstraction issues
-		await btn.element().click();
+		await btn.click();
 		expect(clicked).toBe(true);
 	});
 
@@ -69,11 +68,7 @@ describe('Button', () => {
 		const btn = page.getByTestId('btn-disabled');
 		await expect.element(btn).toBeDisabled();
 
-		try {
-			await btn.element().click();
-		} catch {
-			// Expected failure
-		}
+		await btn.click({ force: true });
 		expect(clicked).toBe(false);
 	});
 });
